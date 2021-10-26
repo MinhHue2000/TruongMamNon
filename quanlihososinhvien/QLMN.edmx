@@ -1,0 +1,499 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QLMNModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Hocphi">
+          <Key>
+            <PropertyRef Name="Khoi" />
+            <PropertyRef Name="Nam" />
+          </Key>
+          <Property Name="Khoi" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Nam" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Hocphi" Type="float" />
+        </EntityType>
+        <EntityType Name="Lop">
+          <Key>
+            <PropertyRef Name="Lop" />
+          </Key>
+          <Property Name="Lop" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Khoi" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Thongtintre">
+          <Key>
+            <PropertyRef Name="Matre" />
+          </Key>
+          <Property Name="Matre" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Hotre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tentre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ngaysinh" Type="datetime" />
+          <Property Name="Gioitinh" Type="nchar" MaxLength="10" />
+          <Property Name="Tongiao" Type="nchar" MaxLength="10" />
+          <Property Name="Lop" Type="nchar" MaxLength="10" />
+          <Property Name="Dantoc" Type="nchar" MaxLength="10" />
+          <Property Name="Diachi" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Thucdon">
+          <Key>
+            <PropertyRef Name="Thu" />
+            <PropertyRef Name="Bua" />
+          </Key>
+          <Property Name="Thu" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Bua" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="ThucDon" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Thongtintre_Lop">
+          <End Role="Lop" Type="Self.Lop" Multiplicity="0..1" />
+          <End Role="Thongtintre" Type="Self.Thongtintre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lop">
+              <PropertyRef Name="Lop" />
+            </Principal>
+            <Dependent Role="Thongtintre">
+              <PropertyRef Name="Lop" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="allhocphi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="allkhoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="allthucdon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="alltre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="capnhattttre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="deleteKhoi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="lopp" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Deletettre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Matrep" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="getallkhoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="getalllop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="getalltre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="insertkhoi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="lopp" Type="nvarchar" Mode="In" />
+          <Parameter Name="khoap" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Inserttre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="masvp" Type="nchar" Mode="In" />
+          <Parameter Name="hosvp" Type="nvarchar" Mode="In" />
+          <Parameter Name="tensvp" Type="nvarchar" Mode="In" />
+          <Parameter Name="ngaysinhp" Type="date" Mode="In" />
+          <Parameter Name="gioitinhp" Type="nchar" Mode="In" />
+          <Parameter Name="lop" Type="nchar" Mode="In" />
+          <Parameter Name="diachip" Type="nvarchar" Mode="In" />
+          <Parameter Name="dantocp" Type="nchar" Mode="In" />
+          <Parameter Name="tongiaop" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="inserthocphi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="khoip" Type="nvarchar" Mode="In" />
+          <Parameter Name="namp" Type="nvarchar" Mode="In" />
+          <Parameter Name="hocphip" Type="float" Mode="In" />
+        </Function>
+        <Function Name="timkiemtttre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="masvp" Type="nchar" Mode="In" />
+          <Parameter Name="hosvp" Type="nvarchar" Mode="In" />
+          <Parameter Name="tensvp" Type="nvarchar" Mode="In" />
+          <Parameter Name="gioitinhp" Type="nchar" Mode="In" />
+          <Parameter Name="diachip" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="timkimthucdon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="thup" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="updatehocphi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="khoip" Type="nvarchar" Mode="In" />
+          <Parameter Name="namp" Type="nvarchar" Mode="In" />
+          <Parameter Name="hocphip" Type="float" Mode="In" />
+        </Function>
+        <Function Name="updatekhoi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="lopp" Type="nvarchar" Mode="In" />
+          <Parameter Name="khoap" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Updatetre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="masvp" Type="nchar" Mode="In" />
+          <Parameter Name="hosvp" Type="nvarchar" Mode="In" />
+          <Parameter Name="tensvp" Type="nvarchar" Mode="In" />
+          <Parameter Name="ngaysinhp" Type="date" Mode="In" />
+          <Parameter Name="gioitinhp" Type="nchar" Mode="In" />
+          <Parameter Name="lop" Type="nchar" Mode="In" />
+          <Parameter Name="diachip" Type="nvarchar" Mode="In" />
+          <Parameter Name="dantocp" Type="nchar" Mode="In" />
+          <Parameter Name="tongiaop" Type="nchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="QLMNModelStoreContainer">
+          <EntitySet Name="Hocphi" EntityType="Self.Hocphi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lop" EntityType="Self.Lop" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Thongtintre" EntityType="Self.Thongtintre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Thucdon" EntityType="Self.Thucdon" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Thongtintre_Lop" Association="Self.FK_Thongtintre_Lop">
+            <End Role="Lop" EntitySet="Lop" />
+            <End Role="Thongtintre" EntitySet="Thongtintre" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLMNModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Hocphi">
+          <Key>
+            <PropertyRef Name="Khoi" />
+            <PropertyRef Name="Nam" />
+          </Key>
+          <Property Name="Khoi" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Nam" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Hocphi1" Type="Double" />
+        </EntityType>
+        <EntityType Name="Lop">
+          <Key>
+            <PropertyRef Name="Lop1" />
+          </Key>
+          <Property Name="Lop1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Khoi" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Thongtintres" Relationship="Self.FK_Thongtintre_Lop" FromRole="Lop" ToRole="Thongtintre" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Thongtintre">
+          <Key>
+            <PropertyRef Name="Matre" />
+          </Key>
+          <Property Name="Matre" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Hotre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tentre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ngaysinh" Type="DateTime" Precision="3" />
+          <Property Name="Gioitinh" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Tongiao" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Lop" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Dantoc" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Diachi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Lop1" Relationship="Self.FK_Thongtintre_Lop" FromRole="Thongtintre" ToRole="Lop" />
+        </EntityType>
+        <EntityType Name="Thucdon">
+          <Key>
+            <PropertyRef Name="Thu" />
+            <PropertyRef Name="Bua" />
+          </Key>
+          <Property Name="Thu" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Bua" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ThucDon1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Thongtintre_Lop">
+          <End Role="Lop" Type="Self.Lop" Multiplicity="0..1" />
+          <End Role="Thongtintre" Type="Self.Thongtintre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lop">
+              <PropertyRef Name="Lop1" />
+            </Principal>
+            <Dependent Role="Thongtintre">
+              <PropertyRef Name="Lop" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLMNEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Hocphis" EntityType="Self.Hocphi" />
+          <EntitySet Name="Lops" EntityType="Self.Lop" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Thongtintres" EntityType="Self.Thongtintre" />
+          <EntitySet Name="Thucdons" EntityType="Self.Thucdon" />
+          <AssociationSet Name="FK_Thongtintre_Lop" Association="Self.FK_Thongtintre_Lop">
+            <End Role="Lop" EntitySet="Lops" />
+            <End Role="Thongtintre" EntitySet="Thongtintres" />
+          </AssociationSet>
+          <FunctionImport Name="allhocphi" ReturnType="Collection(QLMNModel.allhocphi_Result)" />
+          <FunctionImport Name="allkhoa" ReturnType="Collection(QLMNModel.allkhoa_Result)" />
+          <FunctionImport Name="allthucdon" ReturnType="Collection(QLMNModel.allthucdon_Result)" />
+          <FunctionImport Name="alltre" ReturnType="Collection(QLMNModel.alltre_Result)" />
+          <FunctionImport Name="capnhattttre" ReturnType="Collection(QLMNModel.capnhattttre_Result)" />
+          <FunctionImport Name="deleteKhoi">
+          <Parameter Name="lopp" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Deletettre">
+          <Parameter Name="Matrep" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="getallkhoa" ReturnType="Collection(String)" />
+          <FunctionImport Name="getalllop" ReturnType="Collection(String)" />
+          <FunctionImport Name="getalltre" ReturnType="Collection(String)" />
+          <FunctionImport Name="insertkhoi">
+            <Parameter Name="lopp" Mode="In" Type="String" />
+            <Parameter Name="khoap" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Inserttre">
+            <Parameter Name="masvp" Mode="In" Type="String" />
+            <Parameter Name="hosvp" Mode="In" Type="String" />
+            <Parameter Name="tensvp" Mode="In" Type="String" />
+            <Parameter Name="ngaysinhp" Mode="In" Type="DateTime" />
+            <Parameter Name="gioitinhp" Mode="In" Type="String" />
+            <Parameter Name="lop" Mode="In" Type="String" />
+            <Parameter Name="diachip" Mode="In" Type="String" />
+            <Parameter Name="dantocp" Mode="In" Type="String" />
+            <Parameter Name="tongiaop" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="timkiemtttre" ReturnType="Collection(QLMNModel.timkiemtttre_Result)">
+            <Parameter Name="masvp" Mode="In" Type="String" />
+            <Parameter Name="hosvp" Mode="In" Type="String" />
+            <Parameter Name="tensvp" Mode="In" Type="String" />
+            <Parameter Name="gioitinhp" Mode="In" Type="String" />
+            <Parameter Name="diachip" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="updatekhoi">
+            <Parameter Name="lopp" Mode="In" Type="String" />
+            <Parameter Name="khoap" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Updatetre">
+            <Parameter Name="masvp" Mode="In" Type="String" />
+            <Parameter Name="hosvp" Mode="In" Type="String" />
+            <Parameter Name="tensvp" Mode="In" Type="String" />
+            <Parameter Name="ngaysinhp" Mode="In" Type="DateTime" />
+            <Parameter Name="gioitinhp" Mode="In" Type="String" />
+            <Parameter Name="lop" Mode="In" Type="String" />
+            <Parameter Name="diachip" Mode="In" Type="String" />
+            <Parameter Name="dantocp" Mode="In" Type="String" />
+            <Parameter Name="tongiaop" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="inserthocphi">
+            <Parameter Name="khoip" Mode="In" Type="String" />
+            <Parameter Name="namp" Mode="In" Type="String" />
+            <Parameter Name="hocphip" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="updatehocphi">
+            <Parameter Name="khoip" Mode="In" Type="String" />
+            <Parameter Name="namp" Mode="In" Type="String" />
+            <Parameter Name="hocphip" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="timkimthucdon" ReturnType="Collection(String)">
+            <Parameter Name="thup" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="allhocphi_Result">
+          <Property Type="String" Name="Khoi" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Nam" Nullable="false" MaxLength="10" />
+          <Property Type="Double" Name="Hocphi" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="allkhoa_Result">
+          <Property Type="String" Name="Lop" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Khoi" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="allthucdon_Result">
+          <Property Type="String" Name="Thu" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Bua" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="ThucDon" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="alltre_Result">
+          <Property Type="String" Name="Matre" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Hotre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Tentre" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="Ngaysinh" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Gioitinh" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Tongiao" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Lop" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Dantoc" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Diachi" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="capnhattttre_Result">
+          <Property Type="String" Name="Matre" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Hotre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Tentre" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="Ngaysinh" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Gioitinh" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Tongiao" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Lop" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Dantoc" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Diachi" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="timkiemtttre_Result">
+          <Property Type="String" Name="Matre" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Hotre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Tentre" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="Ngaysinh" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Gioitinh" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Lop" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Diachi" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Dantoc" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Tongiao" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Khoi" Nullable="true" MaxLength="10" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLMNModelStoreContainer" CdmEntityContainer="QLMNEntities">
+          <EntitySetMapping Name="Hocphis">
+            <EntityTypeMapping TypeName="QLMNModel.Hocphi">
+              <MappingFragment StoreEntitySet="Hocphi">
+                <ScalarProperty Name="Khoi" ColumnName="Khoi" />
+                <ScalarProperty Name="Nam" ColumnName="Nam" />
+                <ScalarProperty Name="Hocphi1" ColumnName="Hocphi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lops">
+            <EntityTypeMapping TypeName="QLMNModel.Lop">
+              <MappingFragment StoreEntitySet="Lop">
+                <ScalarProperty Name="Lop1" ColumnName="Lop" />
+                <ScalarProperty Name="Khoi" ColumnName="Khoi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="QLMNModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Thongtintres">
+            <EntityTypeMapping TypeName="QLMNModel.Thongtintre">
+              <MappingFragment StoreEntitySet="Thongtintre">
+                <ScalarProperty Name="Matre" ColumnName="Matre" />
+                <ScalarProperty Name="Hotre" ColumnName="Hotre" />
+                <ScalarProperty Name="Tentre" ColumnName="Tentre" />
+                <ScalarProperty Name="Ngaysinh" ColumnName="Ngaysinh" />
+                <ScalarProperty Name="Gioitinh" ColumnName="Gioitinh" />
+                <ScalarProperty Name="Tongiao" ColumnName="Tongiao" />
+                <ScalarProperty Name="Lop" ColumnName="Lop" />
+                <ScalarProperty Name="Dantoc" ColumnName="Dantoc" />
+                <ScalarProperty Name="Diachi" ColumnName="Diachi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Thucdons">
+            <EntityTypeMapping TypeName="QLMNModel.Thucdon">
+              <MappingFragment StoreEntitySet="Thucdon">
+                <ScalarProperty Name="Thu" ColumnName="Thu" />
+                <ScalarProperty Name="Bua" ColumnName="Bua" />
+                <ScalarProperty Name="ThucDon1" ColumnName="ThucDon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="allhocphi" FunctionName="QLMNModel.Store.allhocphi">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLMNModel.allhocphi_Result">
+                <ScalarProperty Name="Khoi" ColumnName="Khoi" />
+                <ScalarProperty Name="Nam" ColumnName="Nam" />
+                <ScalarProperty Name="Hocphi" ColumnName="Hocphi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="allkhoa" FunctionName="QLMNModel.Store.allkhoa">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLMNModel.allkhoa_Result">
+                <ScalarProperty Name="Lop" ColumnName="Lop" />
+                <ScalarProperty Name="Khoi" ColumnName="Khoi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="allthucdon" FunctionName="QLMNModel.Store.allthucdon">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLMNModel.allthucdon_Result">
+                <ScalarProperty Name="Thu" ColumnName="Thu" />
+                <ScalarProperty Name="Bua" ColumnName="Bua" />
+                <ScalarProperty Name="ThucDon" ColumnName="ThucDon" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="alltre" FunctionName="QLMNModel.Store.alltre">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLMNModel.alltre_Result">
+                <ScalarProperty Name="Matre" ColumnName="Matre" />
+                <ScalarProperty Name="Hotre" ColumnName="Hotre" />
+                <ScalarProperty Name="Tentre" ColumnName="Tentre" />
+                <ScalarProperty Name="Ngaysinh" ColumnName="Ngaysinh" />
+                <ScalarProperty Name="Gioitinh" ColumnName="Gioitinh" />
+                <ScalarProperty Name="Tongiao" ColumnName="Tongiao" />
+                <ScalarProperty Name="Lop" ColumnName="Lop" />
+                <ScalarProperty Name="Dantoc" ColumnName="Dantoc" />
+                <ScalarProperty Name="Diachi" ColumnName="Diachi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="capnhattttre" FunctionName="QLMNModel.Store.capnhattttre">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLMNModel.capnhattttre_Result">
+                <ScalarProperty Name="Matre" ColumnName="Matre" />
+                <ScalarProperty Name="Hotre" ColumnName="Hotre" />
+                <ScalarProperty Name="Tentre" ColumnName="Tentre" />
+                <ScalarProperty Name="Ngaysinh" ColumnName="Ngaysinh" />
+                <ScalarProperty Name="Gioitinh" ColumnName="Gioitinh" />
+                <ScalarProperty Name="Tongiao" ColumnName="Tongiao" />
+                <ScalarProperty Name="Lop" ColumnName="Lop" />
+                <ScalarProperty Name="Dantoc" ColumnName="Dantoc" />
+                <ScalarProperty Name="Diachi" ColumnName="Diachi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="deleteKhoi" FunctionName="QLMNModel.Store.deleteKhoi" />
+          <FunctionImportMapping FunctionImportName="Deletettre" FunctionName="QLMNModel.Store.Deletettre" />
+          <FunctionImportMapping FunctionImportName="getallkhoa" FunctionName="QLMNModel.Store.getallkhoa" />
+          <FunctionImportMapping FunctionImportName="getalllop" FunctionName="QLMNModel.Store.getalllop" />
+          <FunctionImportMapping FunctionImportName="getalltre" FunctionName="QLMNModel.Store.getalltre" />
+          <FunctionImportMapping FunctionImportName="insertkhoi" FunctionName="QLMNModel.Store.insertkhoi" />
+          <FunctionImportMapping FunctionImportName="Inserttre" FunctionName="QLMNModel.Store.Inserttre" />
+          <FunctionImportMapping FunctionImportName="timkiemtttre" FunctionName="QLMNModel.Store.timkiemtttre">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLMNModel.timkiemtttre_Result">
+                <ScalarProperty Name="Matre" ColumnName="Matre" />
+                <ScalarProperty Name="Hotre" ColumnName="Hotre" />
+                <ScalarProperty Name="Tentre" ColumnName="Tentre" />
+                <ScalarProperty Name="Ngaysinh" ColumnName="Ngaysinh" />
+                <ScalarProperty Name="Gioitinh" ColumnName="Gioitinh" />
+                <ScalarProperty Name="Lop" ColumnName="Lop" />
+                <ScalarProperty Name="Diachi" ColumnName="Diachi" />
+                <ScalarProperty Name="Dantoc" ColumnName="Dantoc" />
+                <ScalarProperty Name="Tongiao" ColumnName="Tongiao" />
+                <ScalarProperty Name="Khoi" ColumnName="Khoi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="updatekhoi" FunctionName="QLMNModel.Store.updatekhoi" />
+          <FunctionImportMapping FunctionImportName="Updatetre" FunctionName="QLMNModel.Store.Updatetre" />
+          <FunctionImportMapping FunctionImportName="inserthocphi" FunctionName="QLMNModel.Store.inserthocphi" />
+          <FunctionImportMapping FunctionImportName="updatehocphi" FunctionName="QLMNModel.Store.updatehocphi" />
+          <FunctionImportMapping FunctionImportName="timkimthucdon" FunctionName="QLMNModel.Store.timkimthucdon" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

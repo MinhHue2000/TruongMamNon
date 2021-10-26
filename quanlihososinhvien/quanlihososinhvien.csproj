@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3A044ABE-B4D4-4E7B-9492-D9E1ABCE7929}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>quanlihososinhvien</RootNamespace>
+    <AssemblyName>quanlihososinhvien</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.WinControls, Version=2020.2.616.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
+    <Reference Include="Telerik.WinControls.GridView, Version=2020.2.616.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.UI, Version=2020.2.616.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="TelerikCommon, Version=2020.2.616.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="allhocphi_Result.cs">
+      <DependentUpon>QLMN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="allkhoa_Result.cs">
+      <DependentUpon>QLMN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="allthucdon_Result.cs">
+      <DependentUpon>QLMN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="alltre_Result.cs">
+      <DependentUpon>QLMN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="capnhatthongtintre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="capnhatthongtintre.Designer.cs">
+      <DependentUpon>capnhatthongtintre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="capnhattttre_Result.cs">
+      <DependentUpon>QLMN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="chucnangad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="chucnangad.Designer.cs">
+      <DependentUpon>chucnangad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="chucnang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="chucnang.Designer.cs">
+      <DependentUpon>chucnang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dangnhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dangnhap.Designer.cs">
+      <DependentUpon>dangnhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="capnhatlop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="capnhatlop.Designer.cs">
+      <DependentUpon>capnhatlop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hocphi.cs">
+      <DependentUpon>QLMN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Hocphi1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hocphi1.Designer.cs">
+      <DependentUpon>Hocphi1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lop.cs">
+      <DependentUpon>QLMN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QLMN.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLMN.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QLMN.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLMN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QLMN.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLMN.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>QLMN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Thongtintre.cs">
+      <DependentUpon>QLMN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Thucdon.cs">
+      <DependentUpon>QLMN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Thucdon1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Thucdon1.Designer.cs">
+      <DependentUpon>Thucdon1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="timkiemtttre_Result.cs">
+      <DependentUpon>QLMN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tracuuthongtintre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="tracuuthongtintre.Designer.cs">
+      <DependentUpon>tracuuthongtintre.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="capnhatthongtintre.resx">
+      <DependentUpon>capnhatthongtintre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="chucnangad.resx">
+      <DependentUpon>chucnangad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="chucnang.resx">
+      <DependentUpon>chucnang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dangnhap.resx">
+      <DependentUpon>dangnhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="capnhatlop.resx">
+      <DependentUpon>capnhatlop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Hocphi1.resx">
+      <DependentUpon>Hocphi1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Thucdon1.resx">
+      <DependentUpon>Thucdon1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="tracuuthongtintre.resx">
+      <DependentUpon>tracuuthongtintre.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="QLMN.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QLMN.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="QLMN.edmx.diagram">
+      <DependentUpon>QLMN.edmx</DependentUpon>
+    </None>
+    <None Include="Resources\unnamed.jpg" />
+    <None Include="Resources\hinh-nen-background-cuc-dep_110344264.jpg" />
+    <None Include="Resources\cbcfbfa3b9726ba688f2e3c73d616255.jpg" />
+    <None Include="Resources\dangnhap.png" />
+    <None Include="Resources\hinhdangnhap.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="QLMN.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLMN.edmx</DependentUpon>
+      <LastGenOutput>QLMN.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="QLMN.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLMN.edmx</DependentUpon>
+      <LastGenOutput>QLMN.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
